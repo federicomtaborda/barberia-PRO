@@ -1,192 +1,192 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+
+const barbers = [
+    { id: 1, name: 'Julian Vance', title: 'Master Barber', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCvKzXbpI3ZAG_1qY2ZHAXqwepzsHS7EYM8jM_RL9eHTbD35OsL4aLGO7YULqMQ-BLw1e3SSqpRDad34tAkgVDNOnO4gJcfXhwLNEyAkcV43qPgspIv4kWOkKjU_0yRR2O5Ps4n4gRN-NN6qxbac8Z5-TH_CGiEXwt4xSH-42o_L_5nRpFWeiU7q7NmcoPFfgQ3ltEj6-vzm9i1gY2t6PZPDlsT1GqXoK6k6GzSp4HgBn-3bK9ewFJaBEuMwHRVzHEh-cTEYue01rbS' },
+    { id: 2, name: 'Marcus Sterling', title: 'Senior Stylist', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuC7-aLsGXB6YS_eVW0Jzm686bXAZs1Oc4UNGZfcAQBlJIVmprlqPXHpzq0I0vTew4q86V22fQBrZ824khCX7rvgFBOjRKZWqxIbWbFq1abWKkogByNAuav20kVNZOL5_c0oviiNUhLuoiKVce4q9qzKpELb32CThpCgTBuWndJSc_pFY6YSTxf6JYos1w0OqyugjYWF1jr1Udf75_OG54NcrbrAOloMgHTVlyR4zJ8OkSDd_7CWOiOOWsJMPEStwvBA_vaPqd1EYZ7I' },
+];
+
+const availableTimeSlots = [
+    '09:00 AM', '09:30 AM', '10:00 AM', '11:00 AM', 
+    '01:00 PM', '02:30 PM', '04:00 PM', '05:00 PM'
+];
+
+// Helper to get dates for the week
+const getNextDays = (days) => {
+    const dates = [];
+    const today = new Date();
+    const dayNames = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+    const monthNames = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    
+    for (let i = 0; i < days; i++) {
+        const nextDate = new Date(today);
+        nextDate.setDate(today.getDate() + i);
+        // skip sundays for barber shop maybe? Let's assume open every day for now
+        dates.push({
+            dateObj: nextDate,
+            dayName: i === 0 ? 'Hoy' : dayNames[nextDate.getDay()],
+            dayNumber: nextDate.getDate(),
+            month: monthNames[nextDate.getMonth()]
+        });
+    }
+    return dates;
+};
 
 const Calendario = () => {
-  return (
-    <>
-      
-<main className="pb-24">
-{/* Hero Section */}
-<section className="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
-<div className="absolute inset-0 z-0">
-<img className="w-full h-full object-cover opacity-40" data-alt="Close-up of a master barber's hands precisely trimming hair in a moody, low-light studio with warm golden highlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvviz-ddkvoOy0Pw9c0UbRc7Li3J6koGao-8E1mcVs5gM8_5SCnDLDOGXmqQt91p2n88WrZD1wbftuKSfY_Grn4KMLwCYv2UiUQdHULufOu2RA1BcR5mncrJHjVNZlzDf1TNcC7qghBWPDd0sF6YPqaOCJZ_AOxjHWFASazbMSGw5ay-zGH36rLx-IiTNDDpSmR14HJQa6qmup_TC28Fgjd43g4uNICYfyx8YyVY2Cz7080s9QRr8K44ICOF5Cs7GpiQhcSx-c8QIN"/>
-<div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
-<div className="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
-</div>
-<div className="relative z-10 max-w-4xl">
-<h1 className="text-6xl md:text-8xl font-headline font-bold leading-none tracking-tighter mb-6 text-on-surface">
-                    PRECISION<br/>
-<span className="text-primary italic">CRAFTED</span><br/>
-                    STYLE.
-                </h1>
-<p className="text-lg md:text-xl text-on-surface-variant max-w-xl mb-10 font-body leading-relaxed">
-                    More than a haircut. A ritual of excellence tailored for the modern gentleman who values the architectural precision of the master's touch.
-                </p>
-<div className="flex flex-col sm:flex-row gap-4">
-<button className="editorial-gradient text-on-primary px-10 py-5 rounded-xl font-headline font-bold text-lg tracking-tight hover:brightness-110 transition-all duration-400 flex items-center justify-center gap-2">
-                        BOOK NOW
-                        <span className="material-symbols-outlined">calendar_today</span>
-</button>
-<button className="bg-surface-container-highest text-on-surface px-10 py-5 rounded-xl font-headline font-bold text-lg tracking-tight hover:bg-surface-bright transition-all duration-400">
-                        VIEW SERVICES
-                    </button>
-</div>
-</div>
-{/* Asymmetric Accent */}
-<div className="hidden lg:block absolute right-[-5%] bottom-[10%] w-1/3 aspect-square bg-surface-container-low rounded-xl transform rotate-3 inner-shadow-outline-variant-15 overflow-hidden">
-<img className="w-full h-full object-cover opacity-70" data-alt="Macro shot of professional barber tools, silver scissors and clippers arranged on a dark leather mat with dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCcg3MqcVRz4agxQ4WCI_Mcdm3OC0UaaO4dileahmzmPNHe0LFO5R9ypxAPVcpM1Orstr61lh9izqmSFWIgLiLUfwL3vziTchSR3SbcHvkk8svy4Rr5HRevQXYv4WtRBgVJMnhcFeGrXQV3r4c1gHdx9Gnvg_CCeiF04_yOAWRc1uao65ecnfUdOf9SzVxkPiX0umJgTb03VwlQa_0SarnaLpoz1ksm3RJgeFtmr1rTd94kssbI3d6GXPTwTC_k7k6GTeCr12iBkU_"/>
-</div>
-</section>
-{/* Services Section: Bento Grid */}
-<section className="px-6 py-24 max-w-7xl mx-auto">
-<div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-<div>
-<h2 className="text-sm font-label tracking-[0.3em] text-primary uppercase mb-4">The Selection</h2>
-<h3 className="text-4xl md:text-5xl font-headline font-bold text-on-surface leading-tight">CURATED<br/>EXPERIENCES</h3>
-</div>
-<div className="text-on-surface-variant max-w-sm text-right font-body italic">
-                    Each service includes a consultation, signature wash, and artisanal finish.
-                </div>
-</div>
-<div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-{/* Service Card 1 */}
-<div className="md:col-span-8 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between min-h-[400px] inner-shadow-outline-variant-15 relative overflow-hidden group">
-<div className="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
-<img className="w-full h-full object-cover" data-alt="A sophisticated man receiving a sharp fade haircut in a high-end luxury barber shop environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeDGH1MhY8IWXpPapq9bTFuDzq6fyKUyytRrUJsb-lv3Ip80VK2dY-m80qJIZbTT0t69YdSvy8ObZqBdb7TMg4PLQux2bHUo1v3YzPOyi9kxn9vBQqjULARxyg1N26NSsRTrEDV3QALtyti8yydukMFj9j72HhkRoV6XJvYM120pfvJ2Ca_bzhPhIEqpFkfLOPah14dZ2vTjuCRbkrZS2Vg-EQgWCej381COUDAW4sliCZgwVRT_4C_b46RCjs-D34qAhixhaBsCnh"/>
-</div>
-<div className="relative z-10">
-<span className="px-4 py-1 rounded-full border border-outline-variant text-[10px] uppercase tracking-widest text-on-surface-variant font-label">Signature</span>
-<h4 className="text-4xl font-headline font-bold mt-4">The Atelier Haircut</h4>
-<p className="mt-4 text-on-surface-variant max-w-md font-body">Our flagship experience. A precision cut tailored to your head shape, hair type, and lifestyle.</p>
-</div>
-<div className="relative z-10 flex justify-between items-center">
-<span className="text-2xl font-headline font-bold text-primary">$65</span>
-<button className="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all duration-400">
-<span className="material-symbols-outlined">arrow_forward</span>
-</button>
-</div>
-</div>
-{/* Service Card 2 */}
-<div className="md:col-span-4 bg-surface-container-highest rounded-xl p-8 flex flex-col justify-between min-h-[400px] inner-shadow-outline-variant-15 group">
-<div>
-<div className="w-full h-48 rounded-lg overflow-hidden mb-6">
-<img className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close-up of a barber using a straight razor for a beard line-up with steam in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnHXnGSgodsbL3EzxEkXkbHU0b6B6_hu_FLtncooSaCzq-os6uPOZv2E3U_0JDu9UBDJ6JPDXpS-F76FZJmwi8QpxxjWTeN_O_4bJWUNcbCD2NpgjLB5AKS7rqxpsY1bOybms2r5ODWWazIRqJS4prRRgqu4gylcNQMNN_kAPEeMlFPIi_M1_N_ATveG2E75aMSJCbEwpDlNDREd5ekMnvaOgxv_SmMq5H2eY3oVBxxBKDhDEQa1C9DpVEUxqYt2pN2LbWmFVc6tBq"/>
-</div>
-<h4 className="text-2xl font-headline font-bold">Beard Sculpting</h4>
-<p className="mt-2 text-on-surface-variant text-sm font-body">Strategic trimming and hot towel line-up for the perfect silhouette.</p>
-</div>
-<div className="flex justify-between items-center pt-6 border-t border-outline-variant/10">
-<span className="text-xl font-headline font-bold text-primary">$45</span>
-<span className="material-symbols-outlined text-on-surface-variant">content_cut</span>
-</div>
-</div>
-{/* Service Card 3 */}
-<div className="md:col-span-4 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between min-h-[300px] inner-shadow-outline-variant-15">
-<div>
-<h4 className="text-2xl font-headline font-bold">The Royal Shave</h4>
-<p className="mt-2 text-on-surface-variant text-sm font-body">Multi-stage hot towel treatment and straight razor finish.</p>
-</div>
-<div className="flex justify-between items-center">
-<span className="text-xl font-headline font-bold text-primary">$55</span>
-<span className="material-symbols-outlined text-on-surface-variant">flare</span>
-</div>
-</div>
-{/* Service Card 4 */}
-<div className="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 flex items-center gap-8 inner-shadow-outline-variant-15">
-<div className="flex-1">
-<h4 className="text-2xl font-headline font-bold">Head &amp; Face Ritual</h4>
-<p className="mt-2 text-on-surface-variant text-sm font-body">Combine our signature cut with a charcoal mask and facial massage for the ultimate rejuvenation.</p>
-<div className="mt-6 flex items-center gap-4">
-<span className="text-xl font-headline font-bold text-primary">$100</span>
-<span className="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] rounded-full font-label tracking-tighter uppercase">Most Popular</span>
-</div>
-</div>
-<div className="hidden sm:block w-32 h-32 rounded-full border-2 border-primary/20 p-2">
-<div className="w-full h-full rounded-full bg-surface-container-high flex items-center justify-center">
-<span className="material-symbols-outlined text-primary text-4xl">spa</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-{/* Feature Section: The Artisans */}
-<section className="py-24 bg-surface-container-low/50">
-<div className="max-w-7xl mx-auto px-6">
-<div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div className="relative">
-<div className="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl relative z-10">
-<img className="w-full h-full object-cover" data-alt="Portrait of a professional barber with tattoos wearing a black apron in a high-end vintage shop" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvKzXbpI3ZAG_1qY2ZHAXqwepzsHS7EYM8jM_RL9eHTbD35OsL4aLGO7YULqMQ-BLw1e3SSqpRDad34tAkgVDNOnO4gJcfXhwLNEyAkcV43qPgspIv4kWOkKjU_0yRR2O5Ps4n4gRN-NN6qxbac8Z5-TH_CGiEXwt4xSH-42o_L_5nRpFWeiU7q7NmcoPFfgQ3ltEj6-vzm9i1gY2t6PZPDlsT1GqXoK6k6GzSp4HgBn-3bK9ewFJaBEuMwHRVzHEh-cTEYue01rbS"/>
-</div>
-<div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/10 rounded-xl z-0 backdrop-blur-xl border border-primary/20 flex flex-col p-8 justify-center">
-<span className="text-primary text-5xl font-headline font-bold">15+</span>
-<span className="text-on-surface font-label uppercase tracking-widest text-xs mt-2">Years of Mastery</span>
-</div>
-</div>
-<div>
-<h2 className="text-sm font-label tracking-[0.3em] text-primary uppercase mb-4">The Master</h2>
-<h3 className="text-5xl font-headline font-bold text-on-surface mb-8 leading-tight">JULIAN<br/>VANCE</h3>
-<p className="text-on-surface-variant font-body text-lg leading-relaxed mb-8">
-                            Founder of The Atelier, Julian has spent over a decade perfecting the intersection of classical barbering and modern architectural geometry. His philosophy centers on the unique "bone-structure" approach to every client.
-                        </p>
-<div className="space-y-6">
-<div className="flex items-start gap-4">
-<span className="material-symbols-outlined text-primary mt-1">verified</span>
-<div>
-<h5 className="font-headline font-bold text-on-surface">Precision Focus</h5>
-<p className="text-sm text-on-surface-variant">Expertise in textured fades and structured beard shaping.</p>
-</div>
-</div>
-<div className="flex items-start gap-4">
-<span className="material-symbols-outlined text-primary mt-1">content_cut</span>
-<div>
-<h5 className="font-headline font-bold text-on-surface">Artisanal Tools</h5>
-<p className="text-sm text-on-surface-variant">Using only custom-honed Japanese steel for every cut.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-{/* Newsletter / CTA */}
-<section className="px-6 py-24">
-<div className="max-w-4xl mx-auto bg-surface-container-highest rounded-3xl p-12 text-center relative overflow-hidden">
-<div className="absolute top-0 left-0 w-full h-1 bg-primary"></div>
-<h2 className="text-4xl font-headline font-bold mb-4">JOIN THE INNER CIRCLE</h2>
-<p className="text-on-surface-variant mb-10 max-w-md mx-auto">Receive priority booking access and exclusive styling insights from our master barbers.</p>
-<form className="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
-<input className="flex-1 bg-surface-container-lowest border-none rounded-xl px-6 py-4 text-on-surface focus:ring-1 focus:ring-primary placeholder:text-neutral-600 font-body" placeholder="Email Address" type="email"/>
-<button className="editorial-gradient text-on-primary font-headline font-bold px-8 py-4 rounded-xl hover:brightness-110 transition-all">SUBSCRIBE</button>
-</form>
-</div>
-</section>
-</main>
-{/* BottomNavBar */}
-<nav className="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 bg-neutral-950/80 backdrop-blur-lg rounded-t-2xl z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
-<Link className="flex flex-col items-center justify-center text-[#F2CA50] scale-110 group" to="/">
-<span className="material-symbols-outlined" style={{ fontVariationSettings: "'FILL' 1" }}>home_max</span>
-<span className="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Home</span>
-</Link>
-<Link className="flex flex-col items-center justify-center text-neutral-500 group" to="/">
-<span className="material-symbols-outlined">content_cut</span>
-<span className="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Services</span>
-</Link>
-<Link className="flex flex-col items-center justify-center text-neutral-500 group" to="/">
-<span className="material-symbols-outlined">calendar_today</span>
-<span className="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Schedule</span>
-</Link>
-<Link className="flex flex-col items-center justify-center text-neutral-500 group" to="/">
-<span className="material-symbols-outlined">person</span>
-<span className="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Account</span>
-</Link>
-</nav>
-{/* Floating Booking FAB */}
-<button className="fixed bottom-24 right-6 w-16 h-16 rounded-full editorial-gradient text-on-primary shadow-2xl z-40 flex items-center justify-center md:hidden active:scale-90 transition-transform">
-<span className="material-symbols-outlined text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>add</span>
-</button>
+    const [selectedBarber, setSelectedBarber] = useState(barbers[0].id);
+    const [selectedDate, setSelectedDate] = useState(getNextDays(7)[0]);
+    const [selectedTime, setSelectedTime] = useState(null);
+    const navigate = useNavigate();
 
-    </>
-  );
+    const dates = getNextDays(14);
+
+    const handleContinue = () => {
+        if (selectedDate && selectedTime && selectedBarber) {
+            navigate('/confirmacion');
+        }
+    };
+
+    return (
+        <div className="relative min-h-screen bg-background">
+            <main className="pt-24 pb-48 px-6 max-w-4xl mx-auto">
+                <section className="mb-12">
+                    <span className="text-[#F2CA50] font-label text-xs tracking-[0.3em] uppercase mb-2 block">Step 02</span>
+                    <h1 className="font-headline text-5xl md:text-6xl font-bold tracking-tighter text-on-surface leading-none mb-4">
+                        Programa tu <span className="text-[#F2CA50]">Cita</span>
+                    </h1>
+                    <p className="text-on-surface-variant max-w-md font-body text-lg leading-relaxed">
+                        Selecciona el artista de tu elección y encuentra el horario perfecto para tu ritual.
+                    </p>
+                </section>
+
+                <div className="space-y-12">
+                    {/* Barber Selection */}
+                    <section>
+                        <h3 className="text-xl font-headline font-bold text-on-surface mb-6 flex items-center gap-2">
+                            <span className="material-symbols-outlined text-[#F2CA50]">content_cut</span>
+                            Elige a tu Maestro
+                        </h3>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            {barbers.map(barber => (
+                                <div 
+                                    key={barber.id}
+                                    onClick={() => setSelectedBarber(barber.id)}
+                                    className={`group relative rounded-xl p-4 transition-all duration-400 ease-out cursor-pointer flex items-center gap-4 inner-shadow-outline-variant-15
+                                        ${selectedBarber === barber.id 
+                                            ? 'bg-surface-variant border-2 border-[#F2CA50]' 
+                                            : 'bg-surface-container-low border-2 border-transparent hover:bg-surface-container-highest hover:border-[#F2CA50]/30'
+                                        }`}
+                                >
+                                    <div className="w-16 h-16 rounded-full overflow-hidden shrink-0 border-2 border-[#F2CA50]/20">
+                                        <img src={barber.image} alt={barber.name} className={`w-full h-full object-cover transition-all duration-500 ${selectedBarber === barber.id ? 'grayscale-0' : 'grayscale'}`} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-headline font-bold text-lg text-on-surface">{barber.name}</h4>
+                                        <p className="text-xs text-[#F2CA50] font-label tracking-widest uppercase">{barber.title}</p>
+                                    </div>
+                                    {selectedBarber === barber.id && (
+                                        <span className="material-symbols-outlined text-[#F2CA50] absolute right-4" style={{ fontVariationSettings: "'FILL' 1" }}>check_circle</span>
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Date Selection */}
+                    <section>
+                        <h3 className="text-xl font-headline font-bold text-on-surface mb-6 flex items-center gap-2">
+                            <span className="material-symbols-outlined text-[#F2CA50]">calendar_month</span>
+                            Selecciona la Fecha
+                        </h3>
+                        <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x">
+                            {dates.map((d, index) => {
+                                const isSelected = selectedDate.dayNumber === d.dayNumber && selectedDate.month === d.month;
+                                return (
+                                    <div 
+                                        key={index}
+                                        onClick={() => { setSelectedDate(d); setSelectedTime(null); }} // Reset time when day changes
+                                        className={`snap-center shrink-0 w-24 h-32 rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-all duration-300 border-2 inner-shadow-outline-variant-15
+                                            ${isSelected 
+                                                ? 'bg-[#F2CA50] text-neutral-950 border-[#F2CA50] scale-105 shadow-[0_0_20px_rgba(242,202,80,0.2)]' 
+                                                : 'bg-surface-container-low text-on-surface-variant border-transparent hover:bg-surface-container-highest hover:border-[#F2CA50]/30'
+                                            }`}
+                                    >
+                                        <span className={`text-xs font-label uppercase tracking-widest mb-2 ${isSelected ? 'text-neutral-800' : 'text-neutral-500'}`}>{d.month}</span>
+                                        <span className={`text-3xl font-headline font-bold mb-1 ${isSelected ? 'text-neutral-950' : 'text-on-surface'}`}>{d.dayNumber}</span>
+                                        <span className={`text-sm font-label font-semibold ${isSelected ? 'text-neutral-800' : 'text-neutral-400'}`}>{d.dayName}</span>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    </section>
+
+                    {/* Time Selection */}
+                    <section>
+                        <h3 className="text-xl font-headline font-bold text-on-surface mb-6 flex items-center gap-2">
+                            <span className="material-symbols-outlined text-[#F2CA50]">schedule</span>
+                            Selecciona el Horario
+                        </h3>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {availableTimeSlots.map((time) => (
+                                <div 
+                                    key={time}
+                                    onClick={() => setSelectedTime(time)}
+                                    className={`py-4 rounded-xl text-center cursor-pointer font-bold font-headline transition-all duration-300 border-2 inner-shadow-outline-variant-15 hover:-translate-y-1
+                                        ${selectedTime === time 
+                                            ? 'bg-surface-variant border-[#F2CA50] text-[#F2CA50] shadow-[0_4px_20px_rgba(242,202,80,0.15)]' 
+                                            : 'bg-surface-container-low text-on-surface-variant border-transparent hover:border-[#F2CA50]/30 hover:text-white'
+                                        }`}
+                                >
+                                    {time}
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+                </div>
+            </main>
+
+            {/* Sticky Summary Bar */}
+            <div className={`fixed bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-xl bg-neutral-900/90 backdrop-blur-xl rounded-2xl p-4 shadow-2xl flex items-center justify-between border transition-all duration-500 z-40
+                ${selectedTime && selectedDate ? 'translate-y-0 opacity-100 border-[#F2CA50]/30' : 'translate-y-10 opacity-0 pointer-events-none border-outline-variant/20'}
+            `}>
+                <div className="flex flex-col">
+                    <p className="text-[10px] tracking-widest text-[#F2CA50] uppercase mb-1 font-bold">Resumen de Cita</p>
+                    <p className="font-headline text-xl font-bold text-white flex items-center gap-2">
+                        {selectedDate.dayName} {selectedDate.dayNumber} {selectedDate.month} 
+                        <span className="text-neutral-500 font-normal">|</span> 
+                        {selectedTime}
+                    </p>
+                </div>
+                <button 
+                    onClick={handleContinue}
+                    disabled={!selectedTime}
+                    className="bg-[#F2CA50] text-neutral-950 px-8 py-3 rounded-xl font-bold font-label uppercase tracking-widest text-xs transition-all duration-400 active:scale-95 shadow-lg shadow-[#F2CA50]/20 hover:bg-[#D4AF37]"
+                >
+                    Confirmar
+                </button>
+            </div>
+            
+            {/* Bottom Navigation Shell for Mobile Layout matching */}
+            <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 bg-neutral-950/80 backdrop-blur-lg rounded-t-2xl z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+                <Link to="/" className="flex flex-col items-center justify-center text-neutral-500 hover:text-neutral-200 transition-all duration-400">
+                    <span className="material-symbols-outlined mb-1">home_max</span>
+                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest">Inicio</span>
+                </Link>
+                <Link to="/seleccion" className="flex flex-col items-center justify-center text-neutral-500 hover:text-neutral-200 transition-all duration-400">
+                    <span className="material-symbols-outlined mb-1">content_cut</span>
+                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest">Servicios</span>
+                </Link>
+                <Link to="/calendario" className="flex flex-col items-center justify-center text-[#F2CA50] scale-110 group">
+                    <span className="material-symbols-outlined mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>calendar_today</span>
+                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Horarios</span>
+                </Link>
+                <Link to="/login" className="flex flex-col items-center justify-center text-neutral-500 hover:text-neutral-200 transition-all duration-400">
+                    <span className="material-symbols-outlined mb-1">person</span>
+                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest">Cuenta</span>
+                </Link>
+            </nav>
+        </div>
+    );
 };
 
 export default Calendario;
