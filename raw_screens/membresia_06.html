@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                "tertiary-container": "#8db3ff",
+                "secondary": "#c8c6c5",
+                "on-error-container": "#ffdad6",
+                "inverse-on-surface": "#313030",
+                "on-tertiary-fixed": "#001a41",
+                "error-container": "#93000a",
+                "on-secondary-fixed-variant": "#474746",
+                "background": "#131313",
+                "tertiary": "#bacfff",
+                "on-tertiary-fixed-variant": "#004493",
+                "on-background": "#e5e2e1",
+                "surface-variant": "#353534",
+                "surface-bright": "#393939",
+                "on-surface-variant": "#d0c5af",
+                "secondary-container": "#474746",
+                "primary-fixed": "#ffe088",
+                "secondary-fixed-dim": "#c8c6c5",
+                "on-primary-container": "#554300",
+                "primary-container": "#d4af37",
+                "surface-dim": "#131313",
+                "surface": "#131313",
+                "on-primary": "#3c2f00",
+                "secondary-fixed": "#e5e2e1",
+                "tertiary-fixed": "#d8e2ff",
+                "on-secondary-fixed": "#1c1b1b",
+                "surface-container-highest": "#353534",
+                "on-primary-fixed": "#241a00",
+                "on-error": "#690005",
+                "on-tertiary-container": "#004390",
+                "on-primary-fixed-variant": "#574500",
+                "primary-fixed-dim": "#e9c349",
+                "outline": "#99907c",
+                "on-surface": "#e5e2e1",
+                "error": "#ffb4ab",
+                "tertiary-fixed-dim": "#adc7ff",
+                "outline-variant": "#4d4635",
+                "inverse-primary": "#735c00",
+                "surface-container": "#201f1f",
+                "inverse-surface": "#e5e2e1",
+                "surface-tint": "#e9c349",
+                "surface-container-lowest": "#0e0e0e",
+                "surface-container-high": "#2a2a2a",
+                "on-secondary-container": "#b7b5b4",
+                "primary": "#f2ca50",
+                "surface-container-low": "#1c1b1b",
+                "on-tertiary": "#002e68",
+                "on-secondary": "#313030"
+            },
+            "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+            },
+            "fontFamily": {
+                "headline": ["Space Grotesk"],
+                "body": ["Manrope"],
+                "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .card-metallic-silver {
+            background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 50%, #4b5563 100%);
+        }
+        .card-metallic-gold {
+            background: linear-gradient(135deg, #f2ca50 0%, #d4af37 50%, #856a1b 100%);
+        }
+        .card-metallic-elite {
+            background: linear-gradient(135deg, #2a2a2a 0%, #131313 50%, #000000 100%);
+            border: 1px solid rgba(242, 202, 80, 0.2);
+        }
+        .text-shadow-premium {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body selection:bg-primary selection:text-on-primary">
+<!-- TopAppBar -->
+<header class="bg-neutral-950/60 backdrop-blur-xl fixed top-0 w-full z-50 shadow-2xl shadow-black/40">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-amber-400 cursor-pointer">menu</span>
+<h1 class="font-['Space_Grotesk'] tracking-tighter uppercase text-xl font-bold tracking-widest text-amber-500">THE ATELIER</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-neutral-400 hover:text-amber-200 transition-colors duration-400 cursor-pointer">search</span>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container-highest ring-1 ring-outline-variant/20">
+<img alt="User profile avatar" data-alt="close-up portrait of a stylish man with a clean beard and modern haircut in dramatic studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCi8D8kZZa0QVVgQJ7hZ_C-BF3DjMVunvI4f9OfzeU9HiS15QnFFSOBZiTtYQbo7y16yI7E7bi31yDE18ryYw16EcXVa4fIe9E-_CvrDnFTOhTrW9tM424LCWbaO2aR0Yaevcd8ZNQaMr9APoLva0bDjdVEzTZWasAVCuZWiwMZO4nCHmwM_krnhmJA-0fxgLfjNMRxXAqDhyoi0drjmKTN2VDr4OlJbv9O2WjKPIr3oC-JTPnmx7a293gcDnntOxNQ233yMDHqImmW"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-20 text-center">
+<h2 class="font-headline text-5xl md:text-7xl font-bold tracking-tighter mb-6 text-on-background">
+                EL CLUB DE <span class="text-primary italic">ARTESANOS</span>
+</h2>
+<p class="font-body text-on-surface-variant max-w-2xl mx-auto text-lg leading-relaxed">
+                Únete a la élite. Un programa diseñado para quienes ven el cuidado personal como un ritual sagrado, no una tarea.
+            </p>
+</section>
+<!-- Membership Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-24">
+<!-- Silver Card -->
+<div class="flex flex-col">
+<div class="card-metallic-silver rounded-[2rem] p-8 aspect-[1.58/1] relative overflow-hidden shadow-2xl mb-8 group transition-transform duration-500 hover:scale-105">
+<div class="absolute top-0 left-0 w-full h-full bg-white/10 opacity-0 group-hover:opacity-20 transition-opacity"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-headline font-bold text-neutral-900 tracking-widest text-lg">SILVER</div>
+<span class="material-symbols-outlined text-neutral-900 text-3xl">contactless</span>
+</div>
+<div class="mt-auto">
+<div class="font-headline text-neutral-800 text-sm tracking-widest mb-1 opacity-60">CLIENTE PREFERENTE</div>
+<div class="font-headline text-neutral-900 font-bold tracking-widest">JULIÁN VOSS</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+</div>
+<div class="px-4">
+<h3 class="font-headline text-2xl font-bold text-secondary mb-4">Nivel Silver</h3>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>2 cortes de autor al mes</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Bebida de cortesía (Café/Agua)</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>10% desc. en productos Atelier</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-surface-container-highest text-on-surface font-bold font-headline tracking-widest uppercase hover:bg-surface-bright transition-colors">Seleccionar Silver</button>
+</div>
+</div>
+<!-- Gold Card (Active) -->
+<div class="flex flex-col scale-105 z-10">
+<div class="card-metallic-gold rounded-[2rem] p-8 aspect-[1.58/1] relative overflow-hidden shadow-[0_20px_50px_rgba(212,175,55,0.3)] mb-8 group transition-transform duration-500 hover:scale-105">
+<div class="absolute top-0 left-0 w-full h-full bg-white/20 opacity-0 group-hover:opacity-30 transition-opacity"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-headline font-bold text-on-primary-container tracking-widest text-lg">GOLD</div>
+<span class="material-symbols-outlined text-on-primary-container text-3xl">contactless</span>
+</div>
+<div class="mt-auto">
+<div class="font-headline text-on-primary-container text-sm tracking-widest mb-1 opacity-60">SOCIO DISTINGUIDO</div>
+<div class="font-headline text-on-primary-container font-bold tracking-widest">JULIÁN VOSS</div>
+</div>
+<div class="absolute -right-12 -bottom-12 w-48 h-48 bg-primary/20 rounded-full blur-3xl"></div>
+</div>
+<div class="px-4">
+<div class="inline-block px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-primary text-[10px] font-bold tracking-[0.2em] uppercase mb-4">MÁS POPULAR</div>
+<h3 class="font-headline text-2xl font-bold text-primary mb-4">Nivel Gold</h3>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span class="font-semibold">Cortes ilimitados</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Barra Premium (Whisky &amp; Gin)</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Prioridad de reserva (24h)</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<span>Invitado mensual gratis</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold font-headline tracking-widest uppercase shadow-lg shadow-primary/20 hover:brightness-110 transition-all">Unirme a Gold</button>
+</div>
+</div>
+<!-- Elite Card -->
+<div class="flex flex-col">
+<div class="card-metallic-elite rounded-[2rem] p-8 aspect-[1.58/1] relative overflow-hidden shadow-2xl mb-8 group transition-transform duration-500 hover:scale-105 border border-outline-variant/30">
+<div class="absolute top-0 left-0 w-full h-full bg-primary/5 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+<div class="flex justify-between items-start mb-12">
+<div class="font-headline font-bold text-primary tracking-[0.2em] text-lg">ELITE</div>
+<span class="material-symbols-outlined text-primary text-3xl">contactless</span>
+</div>
+<div class="mt-auto">
+<div class="font-headline text-primary/60 text-sm tracking-widest mb-1">CÍRCULO PRIVADO</div>
+<div class="font-headline text-on-surface font-bold tracking-widest uppercase">JULIÁN VOSS</div>
+</div>
+<div class="absolute -right-8 -bottom-8 w-40 h-40 bg-white/5 rounded-full blur-2xl"></div>
+</div>
+<div class="px-4">
+<h3 class="font-headline text-2xl font-bold text-on-surface mb-4">Nivel Elite</h3>
+<ul class="space-y-4 mb-8">
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Todo lo de Gold + SPA</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Maestro Artesano Asignado</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Acceso a Eventos Privados</span>
+</li>
+<li class="flex items-center gap-3 text-on-surface-variant">
+<span class="material-symbols-outlined text-primary text-sm">check_circle</span>
+<span>Valet Parking Incluido</span>
+</li>
+</ul>
+<button class="w-full py-4 rounded-xl border border-outline-variant text-on-surface font-bold font-headline tracking-widest uppercase hover:bg-surface-container-highest transition-colors">Solicitar Elite</button>
+</div>
+</div>
+</div>
+<!-- Featured Benefits Bento Grid -->
+<section class="mt-32">
+<h2 class="font-headline text-3xl font-bold mb-12 flex items-center gap-4">
+<span class="h-px w-12 bg-primary"></span>
+                BENEFICIOS EXCLUSIVOS
+            </h2>
+<div class="grid grid-cols-1 md:grid-cols-4 md:grid-rows-2 gap-4 h-auto md:h-[600px]">
+<div class="md:col-span-2 md:row-span-2 rounded-3xl bg-surface-container-low overflow-hidden relative group">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="high-end luxury lounge with dark leather chairs, amber lighting, and a collection of premium whiskey bottles on a marble bar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAlCJ0s1PuxEz7QK0WPzzgmxDCoeyfILjH35ate6YLGsR0yx3E62W_o0oh1SEA4DkbjAOl9-UvlpaRfwNIOFrVILW0EpkLfTu3kGEJQFj6SBi88OT6UY_-oUl1Sr2EZOIPSB7gcTMedIhYPk-Mnj3JwS93w83o-JBWr2fkD-Bx7IaFmdeQqc5lnsXXPbK4L72RDu7WGzk6WiBV3Wi8I_0pApmKLbdH-_UVEkW1ySr78Ya8_m2IQQy94d3N3BElaT6_ZU_16IGr34P3N"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent p-8 flex flex-col justify-end">
+<h4 class="font-headline text-2xl font-bold mb-2">Barra Premium</h4>
+<p class="text-on-surface-variant text-sm">Acceso a nuestra selección privada de destilados y café de origen mientras esperas o durante tu servicio.</p>
+</div>
+</div>
+<div class="md:col-span-2 rounded-3xl bg-surface-container-low overflow-hidden relative group">
+<img class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" data-alt="professional barber focused on a precision haircut using vintage steel scissors with warm atmospheric smoke in the background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC2CpDc_8JNbSBcGYIPYI2BQyuSFVADcNADxgJ1qF1nktzi3ZWcO5KewuCAPz_AKZdGkSIGeENS-UNzu3coVHKElUVanXtAZTwl9IXZ61hmKf31xCyKYGu21g1PB3dh3pAookVFkg2mbm05nxmrSK-mtytvwfaWBzSUWBZxrNe-zOugekcTcGwC-gUZRpbiQdO-Y7NiAgWEl9GPncbEmtq3B4GEIk1gUt2-JR9-RggAOUaGCL-krMIufYBSXjU1RT3LhwUhk_6gRmP"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent p-8 flex flex-col justify-end">
+<h4 class="font-headline text-xl font-bold mb-2 text-primary">Cortes Ilimitados</h4>
+<p class="text-on-surface-variant text-sm">Mantén tu estilo impecable todos los días del mes sin preocuparte por el costo individual.</p>
+</div>
+</div>
+<div class="rounded-3xl bg-surface-container-low p-8 flex flex-col justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">calendar_month</span>
+<h4 class="font-headline font-bold mb-1">Prioridad</h4>
+<p class="text-on-surface-variant text-xs">Reserva tu hora preferida antes que nadie.</p>
+</div>
+<div class="rounded-3xl bg-surface-container-low p-8 flex flex-col justify-center border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary text-4xl mb-4">celebration</span>
+<h4 class="font-headline font-bold mb-1">Eventos</h4>
+<p class="text-on-surface-variant text-xs">Catas de vino y networking empresarial.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- NavigationDrawer Simulator (Left-aligned as requested in JSON) -->
+<aside class="hidden md:flex fixed left-0 top-0 h-full w-80 bg-neutral-950 flex-col py-8 z-[60] -translate-x-full lg:translate-x-0 transition-transform duration-500 border-r border-outline-variant/10">
+<div class="px-8 mb-12">
+<div class="flex items-center gap-4 mb-8">
+<div class="w-12 h-12 rounded-full overflow-hidden border-2 border-amber-500">
+<img alt="Client Profile Picture" data-alt="client profile picture of a stylish man" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_lUR7Km5hxWEXXb2nP58C3v2APceOVolDpmJ1i5exo5o80LdCjqx5V-FtaNmzwIO03IFR51xcqRr8OtGdP9KXQWOAruwAuEAUoKsDoau_ETIRco3NP8ePQ8EunLKRE9jF8Sj9kgefxK5hHHDjDhCBJCQnB7EoP0kN0iXHDdDmNAHIMSlJfoSZE-yM6BhwevmLsxdIz0VslY9syCvXA9sq807ZpI1oKqW7dDyBwbbpClAEIiiwZ8mExpvmCXR-SrNRd4P3DeqZ3uGm"/>
+</div>
+<div>
+<h4 class="font-['Space_Grotesk'] font-bold text-amber-500 leading-none">Julian Voss</h4>
+<span class="text-[10px] text-neutral-400 font-bold uppercase tracking-widest">Gold Member</span>
+</div>
+</div>
+<div class="bg-neutral-900/50 rounded-2xl p-4">
+<p class="text-[10px] text-neutral-500 uppercase tracking-widest mb-1">Siguiente Cita</p>
+<p class="text-amber-400 font-bold text-xs">Dec 12, 10:00 AM</p>
+</div>
+</div>
+<nav class="flex-1 space-y-2 px-4">
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-400 hover:bg-neutral-900 hover:text-amber-200 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-['Space_Grotesk'] font-medium">My Dashboard</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-amber-400 bg-neutral-900 font-bold border-l-4 border-amber-500 rounded-r-xl" href="#">
+<span class="material-symbols-outlined">workspace_premium</span>
+<span class="font-['Space_Grotesk'] font-medium">Loyalty Status</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-400 hover:bg-neutral-900 hover:text-amber-200 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-['Space_Grotesk'] font-medium">Artisans</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-400 hover:bg-neutral-900 hover:text-amber-200 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-['Space_Grotesk'] font-medium">Book Now</span>
+</a>
+<a class="flex items-center gap-4 px-4 py-3 text-neutral-400 hover:bg-neutral-900 hover:text-amber-200 transition-all rounded-xl" href="#">
+<span class="material-symbols-outlined">contact_support</span>
+<span class="font-['Space_Grotesk'] font-medium">Support</span>
+</a>
+</nav>
+<div class="mt-auto px-8">
+<div class="h-px bg-outline-variant/20 mb-6"></div>
+<p class="text-[10px] text-neutral-600 tracking-tighter uppercase font-headline">THE ATELIER © 2024</p>
+</div>
+</aside>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-neutral-950/80 backdrop-blur-2xl z-50 rounded-t-2xl shadow-[0_-8px_30px_rgb(0,0,0,0.5)]">
+<div class="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 hover:text-amber-300 transition-all duration-300">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Studio</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 hover:text-amber-300 transition-all duration-300">
+<span class="material-symbols-outlined">auto_awesome_motion</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Portfolios</span>
+</div>
+<div class="flex flex-col items-center justify-center text-amber-400 bg-neutral-800/50 rounded-xl px-4 py-1">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">card_membership</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Club</span>
+</div>
+<div class="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 hover:text-amber-300 transition-all duration-300">
+<span class="material-symbols-outlined">star</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Reviews</span>
+</div>
+</nav>
+</body></html>

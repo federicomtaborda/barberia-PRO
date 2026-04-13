@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reseñas | THE ATELIER</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-container": "#8db3ff",
+                    "secondary": "#c8c6c5",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-fixed": "#001a41",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#474746",
+                    "background": "#131313",
+                    "tertiary": "#bacfff",
+                    "on-tertiary-fixed-variant": "#004493",
+                    "on-background": "#e5e2e1",
+                    "surface-variant": "#353534",
+                    "surface-bright": "#393939",
+                    "on-surface-variant": "#d0c5af",
+                    "secondary-container": "#474746",
+                    "primary-fixed": "#ffe088",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-primary-container": "#554300",
+                    "primary-container": "#d4af37",
+                    "surface-dim": "#131313",
+                    "surface": "#131313",
+                    "on-primary": "#3c2f00",
+                    "secondary-fixed": "#e5e2e1",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "surface-container-highest": "#353534",
+                    "on-primary-fixed": "#241a00",
+                    "on-error": "#690005",
+                    "on-tertiary-container": "#004390",
+                    "on-primary-fixed-variant": "#574500",
+                    "primary-fixed-dim": "#e9c349",
+                    "outline": "#99907c",
+                    "on-surface": "#e5e2e1",
+                    "error": "#ffb4ab",
+                    "tertiary-fixed-dim": "#adc7ff",
+                    "outline-variant": "#4d4635",
+                    "inverse-primary": "#735c00",
+                    "surface-container": "#201f1f",
+                    "inverse-surface": "#e5e2e1",
+                    "surface-tint": "#e9c349",
+                    "surface-container-lowest": "#0e0e0e",
+                    "surface-container-high": "#2a2a2a",
+                    "on-secondary-container": "#b7b5b4",
+                    "primary": "#f2ca50",
+                    "surface-container-low": "#1c1b1b",
+                    "on-tertiary": "#002e68",
+                    "on-secondary": "#313030"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .no-scrollbar::-webkit-scrollbar { display: none; }
+      .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-primary/30">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-neutral-950/60 backdrop-blur-xl shadow-2xl shadow-black/40">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-amber-400">menu</span>
+<h1 class="text-xl font-bold tracking-widest text-amber-500 font-['Space_Grotesk'] uppercase">THE ATELIER</h1>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex gap-8 text-sm font-['Space_Grotesk'] tracking-tighter uppercase">
+<a class="text-neutral-400 hover:text-amber-200 transition-colors duration-400" href="#">Studio</a>
+<a class="text-neutral-400 hover:text-amber-200 transition-colors duration-400" href="#">Portfolios</a>
+<a class="text-neutral-400 hover:text-amber-200 transition-colors duration-400" href="#">Club</a>
+<a class="text-amber-400" href="#">Reviews</a>
+</nav>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="Portrait of a well-groomed man with a sharp beard and stylish haircut in a moody, professional studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkYihWnphaEGxY6G30RINF3mCec2MwRoAlVPWS6UKvLfe8bujtPgPtmc4muxnUB3o1gH1wFSuw9dRJhEA8-DrtRR5YVrPjRySnmHIMOyDI3hPcEuJrW61ITIUiKyEK1lLImrOiBO5wWE4P1LMnWg-rBRw7N41ZyFA9KaiBN2C_7cCo42GuRGh1ZjZ3isxmK67C_5vNxw_J2CxuNYHwz-uTGp370tnQ53vBrxZxqK1iHZq8mWaYUx70d_RPum7agVM3AhOUinlsxAGe"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 max-w-7xl mx-auto">
+<!-- Hero Section -->
+<section class="mb-16">
+<h2 class="text-5xl md:text-7xl font-headline font-bold tracking-tighter text-on-surface leading-none mb-6">
+                EL ARTE DEL <span class="text-primary italic">TESTIMONIO</span>
+</h2>
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8">
+<p class="max-w-xl text-lg text-on-surface-variant font-light leading-relaxed">
+                    Nuestra comunidad es el alma de The Atelier. Descubre las experiencias de quienes han confiado su imagen a nuestros maestros artesanos.
+                </p>
+<button class="bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold py-4 px-8 rounded-xl shadow-lg hover:brightness-110 transition-all flex items-center gap-3 w-fit">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add_a_photo</span>
+                    COMPARTIR MI ESTILO
+                </button>
+</div>
+</section>
+<!-- Stats Grid (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+<div class="md:col-span-2 bg-surface-container-low rounded-3xl p-8 flex flex-col justify-between overflow-hidden relative group">
+<div class="relative z-10">
+<div class="flex gap-1 mb-4">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h3 class="text-4xl font-headline font-bold mb-2">4.9 / 5.0</h3>
+<p class="text-on-surface-variant font-medium tracking-wide">CALIFICACIÓN PROMEDIO DE 1,200+ CLIENTES</p>
+</div>
+<div class="absolute -right-12 -bottom-12 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[240px]" style="font-variation-settings: 'wght' 700;">verified</span>
+</div>
+</div>
+<div class="bg-surface-container-highest rounded-3xl p-8 flex flex-col items-center justify-center text-center">
+<span class="material-symbols-outlined text-primary text-5xl mb-4">loyalty</span>
+<h4 class="text-xl font-headline font-semibold mb-1">PROGRAMA CLUB</h4>
+<p class="text-sm text-on-surface-variant">Gana puntos por cada reseña con foto publicada.</p>
+</div>
+</section>
+<!-- Social Review Wall (Masonry-like Bento Grid) -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Card 1 -->
+<div class="flex flex-col gap-4 group">
+<div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="High-end barbershop interior with vintage leather chairs and warm amber lighting reflecting off polished brass details" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1beejNsngz4tWHjpgGlIWDHHg8ctuvAJ-6nVYLg9CaMp7EcE9WFRQleI7--QvbialIWhEZu7ZJlLiJH4N3IECNTG0ovw-XwjQb5OjZZqcv4NLs57yd2ptlNW2AJBVo58ZrfPNNjFWWG59W-rvWYWQom2hz6oI_P_hLHMlqzIhNJIMBhTt1XaORZ3SyovykgkY7TB99L7scFCyDRqC5CgKLiRffAxYHYEIHhq_rM6uXlCcg5QafHPqY8JiIlTjufxV-bboAb9CmAYr"/>
+<div class="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-4 left-4 flex gap-1">
+<span class="text-xs bg-primary/20 backdrop-blur-md text-primary px-3 py-1 rounded-full font-bold uppercase tracking-widest">Corte Signature</span>
+</div>
+</div>
+<div class="px-2">
+<div class="flex justify-between items-center mb-3">
+<h4 class="text-lg font-headline font-bold">Mateo Rodríguez</h4>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-light italic leading-relaxed">
+                        "La atención al detalle es insuperable. No es solo un corte, es un ritual de precisión. Julian entiende perfectamente las facciones."
+                    </p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="flex flex-col gap-4 group">
+<div class="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Close up of a professional barber using a straight razor on a client with dramatic cinematic lighting and shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDhE_G4e9Y4vTH8O_4CMOQ6qa8Z9Kpj0dytBh0zcb9fhhh-YqAS4J0E-vLfZ6V0oLt3Jhk7ANp5OEP5MhGuEyJ2jhHjI35pFkUr_apRUF7UeNv-wJ_yjTLhLfsc6dw_npwed2ATstjzNroTb_zBUAfJ-7gtJ__fP_FJyWbIjKOHgyzqG95X5nZ4mH__1mIER_8XaGMWDMbGT7-srn7KSpyeoczRi0qQbdc0v1IljEs_7f1nkY2Lp9rjt2rbmWBePlS6ciC8ONqKvuuZ"/>
+<div class="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-4 left-4 flex gap-1">
+<span class="text-xs bg-tertiary/20 backdrop-blur-md text-tertiary px-3 py-1 rounded-full font-bold uppercase tracking-widest">Afeitado Tradicional</span>
+</div>
+</div>
+<div class="px-2">
+<div class="flex justify-between items-center mb-3">
+<h4 class="text-lg font-headline font-bold">Carlos Méndez</h4>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-light italic leading-relaxed">
+                        "El mejor afeitado con toalla caliente que he tenido. Salí renovado. La atmósfera del Atelier es simplemente otro nivel."
+                    </p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="flex flex-col gap-4 group">
+<div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Sophisticated man wearing a tailored suit and a perfect haircut, walking through a modern urban architectural setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLSLyBzCSH9GvJHjks7lEsfGqSo966A19fy2L1OcAs18W0W6mH6p6c-QdoDEf7Ic854_l-B3qZYFK02fsNQoMkCXwKTOxeJ27H3TDqOsH6JFvVcSdSowlutXfN8fIYVnwzMJEDK0fZjyPfsRNe-JiF6aMdMFTfm3tEl-S8j0GO5jXy8aWZzOQp4F6hHUokl0SP6dr84mYSrlsvFPr32PiZqrEO2_9K7KwX6rA--r1SX9HotaqAWZ6SsSl7GdzEH4AyKp-3inQwXr_S"/>
+<div class="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-transparent opacity-60"></div>
+<div class="absolute bottom-4 left-4 flex gap-1">
+<span class="text-xs bg-primary/20 backdrop-blur-md text-primary px-3 py-1 rounded-full font-bold uppercase tracking-widest">Estilismo VIP</span>
+</div>
+</div>
+<div class="px-2">
+<div class="flex justify-between items-center mb-3">
+<h4 class="text-lg font-headline font-bold">Fernando D'Amico</h4>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-light italic leading-relaxed">
+                        "Impecable. Desde el café de cortesía hasta el resultado final. Es el lugar al que vas cuando tu imagen importa de verdad."
+                    </p>
+</div>
+</div>
+<!-- Card 4 (Text Only for Variety) -->
+<div class="bg-surface-container-low rounded-3xl p-8 flex flex-col justify-between border border-outline-variant/10">
+<div class="mb-6">
+<div class="flex gap-0.5 mb-4">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-xl font-body font-medium text-on-surface leading-tight">
+                        "He pasado por muchas barberías de lujo en Europa y The Atelier no les envidia nada. La técnica de tijera de Marcus es quirúrgica."
+                    </p>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center text-primary font-bold">SJ</div>
+<div>
+<p class="font-headline font-bold text-sm">Santiago Jiménez</p>
+<p class="text-xs text-on-surface-variant uppercase tracking-tighter">Miembro Gold</p>
+</div>
+</div>
+</div>
+<!-- Card 5 -->
+<div class="flex flex-col gap-4 group">
+<div class="relative aspect-square rounded-2xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="Dynamic shot of a barber finishing a haircut with hairspray, dust particles dancing in a single beam of light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCay4yGw6FqvApzwp6mjknKe9zykvfRRS4iMeQLHB_W9wCeDekEL8Qsrd8tBkKWmE6CnFdt77V0f0sfktSaHalrappZ5VomqSNQnplGmm-MRTU6vkNisf2xLE7-PaBSZacS5nED-A2U8UmxTiDrfjF4YFW3bkOJfSIxFNBWOpP9VhdgkoZTgSj3LPof0m0ObDVHtBavlRSqwIm6AAxFrlIm6bsBT54RWC7BxjRpOUylxn1yZib3eYgLz2jwVqYMJnSsPM8_XcH_AhVp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-transparent to-transparent opacity-60"></div>
+</div>
+<div class="px-2">
+<div class="flex justify-between items-center mb-3">
+<h4 class="text-lg font-headline font-bold">Roberto G.</h4>
+<div class="flex gap-0.5">
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-primary text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+</div>
+<p class="text-on-surface-variant font-light italic leading-relaxed">
+                        "Excelente ambiente y música. El perfilado de barba es perfecto, usan productos de primera calidad que huelen increíble."
+                    </p>
+</div>
+</div>
+<!-- Card 6 -->
+<div class="bg-gradient-to-br from-surface-container-high to-surface-container-low rounded-3xl p-8 flex flex-col items-center justify-center text-center gap-6 border border-primary/10">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-3xl">rate_review</span>
+</div>
+<div>
+<h4 class="text-2xl font-headline font-bold mb-2">Tu opinión importa</h4>
+<p class="text-on-surface-variant text-sm px-4">Únete a nuestra exclusiva lista de clientes y cuéntanos tu experiencia.</p>
+</div>
+<button class="bg-surface text-primary border border-primary font-bold py-3 px-8 rounded-full hover:bg-primary hover:text-on-primary transition-all duration-300">
+                    ESCRIBIR RESEÑA
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-neutral-950/80 backdrop-blur-2xl z-50 rounded-t-2xl shadow-[0_-8px_30px_rgb(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 transition-all duration-300 hover:text-amber-300 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">content_cut</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest">Studio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 transition-all duration-300 hover:text-amber-300 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">auto_awesome_motion</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest">Portfolios</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 transition-all duration-300 hover:text-amber-300 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1">card_membership</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest">Club</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-400 bg-neutral-800/50 rounded-xl px-4 py-1 transition-all duration-300 scale-95 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined mb-1" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest">Reviews</span>
+</a>
+</nav>
+</body></html>

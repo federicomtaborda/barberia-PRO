@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>THE ATELIER | Barbería de Alta Gama</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error": "#ffb4ab",
+                    "tertiary": "#bacfff",
+                    "surface-container-low": "#1c1b1b",
+                    "on-secondary-fixed-variant": "#474746",
+                    "surface-variant": "#353534",
+                    "primary-fixed": "#ffe088",
+                    "inverse-on-surface": "#313030",
+                    "on-tertiary-fixed": "#001a41",
+                    "outline": "#99907c",
+                    "on-primary": "#3c2f00",
+                    "on-background": "#e5e2e1",
+                    "tertiary-fixed": "#d8e2ff",
+                    "on-tertiary-container": "#004390",
+                    "outline-variant": "#4d4635",
+                    "on-secondary-container": "#b7b5b4",
+                    "primary": "#f2ca50",
+                    "secondary-container": "#474746",
+                    "tertiary-fixed-dim": "#adc7ff",
+                    "background": "#131313",
+                    "on-secondary-fixed": "#1c1b1b",
+                    "surface-bright": "#393939",
+                    "secondary-fixed-dim": "#c8c6c5",
+                    "on-tertiary-fixed-variant": "#004493",
+                    "on-error-container": "#ffdad6",
+                    "on-tertiary": "#002e68",
+                    "on-surface": "#e5e2e1",
+                    "tertiary-container": "#8db3ff",
+                    "primary-container": "#d4af37",
+                    "secondary": "#c8c6c5",
+                    "on-primary-container": "#554300",
+                    "surface-container-lowest": "#0e0e0e",
+                    "on-primary-fixed-variant": "#574500",
+                    "on-surface-variant": "#d0c5af",
+                    "secondary-fixed": "#e5e2e1",
+                    "surface-container-high": "#2a2a2a",
+                    "on-secondary": "#313030",
+                    "surface-container-highest": "#353534",
+                    "on-error": "#690005",
+                    "surface-container": "#201f1f",
+                    "surface": "#131313",
+                    "on-primary-fixed": "#241a00",
+                    "inverse-surface": "#e5e2e1",
+                    "error-container": "#93000a",
+                    "inverse-primary": "#735c00",
+                    "surface-dim": "#131313",
+                    "primary-fixed-dim": "#e9c349",
+                    "surface-tint": "#e9c349"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Space Grotesk"],
+                    "body": ["Manrope"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #131313;
+            color: #e5e2e1;
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .inner-shadow-outline-variant-15 {
+            box-shadow: inset 0 0 0 1px rgba(77, 70, 53, 0.15);
+        }
+        .editorial-gradient {
+            background: linear-gradient(135deg, #f2ca50 0%, #d4af37 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="selection:bg-primary selection:text-on-primary overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-neutral-950/60 backdrop-blur-md flex justify-between items-center px-6 py-4 w-full inner-shadow-outline-variant-15">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-[#F2CA50]">menu</span>
+<span class="text-xl font-bold tracking-tighter text-[#F2CA50] uppercase font-['Space_Grotesk']">THE ATELIER</span>
+</div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="text-[#F2CA50] font-['Manrope'] text-sm tracking-widest uppercase hover:text-[#D4AF37] transition-colors duration-400" href="#">Inicio</a>
+<a class="text-neutral-400 font-['Manrope'] text-sm tracking-widest uppercase hover:text-[#D4AF37] transition-colors duration-400" href="#">Servicios</a>
+<a class="text-neutral-400 font-['Manrope'] text-sm tracking-widest uppercase hover:text-[#D4AF37] transition-colors duration-400" href="#">Horarios</a>
+<a class="text-neutral-400 font-['Manrope'] text-sm tracking-widest uppercase hover:text-[#D4AF37] transition-colors duration-400" href="#">Cuenta</a>
+</nav>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border border-outline-variant/20">
+<img alt="Logotipo de la Barbería" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC7-aLsGXB6YS_eVW0Jzm686bXAZs1Oc4UNGZfcAQBlJIVmprlqPXHpzq0I0vTew4q86V22fQBrZ824khCX7rvgFBOjRKZWqxIbWbFq1abWKkogByNAuav20kVNZOL5_c0oviiNUhLuoiKVce4q9qzKpELb32CThpCgTBuWndJSc_pFY6YSTxf6JYos1w0OqyugjYWF1jr1Udf75_OG54NcrbrAOloMgHTVlyR4zJ8OkSDd_7CWOiOOWsJMPEStwvBA_vaPqd1EYZ7I"/>
+</div>
+</header>
+<main class="pb-24">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center px-6 pt-20 overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img alt="Primer plano de las manos de un maestro barbero recortando el cabello con precisión en un estudio con iluminación tenue y reflejos dorados cálidos" class="w-full h-full object-cover opacity-40" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvviz-ddkvoOy0Pw9c0UbRc7Li3J6koGao-8E1mcVs5gM8_5SCnDLDOGXmqQt91p2n88WrZD1wbftuKSfY_Grn4KMLwCYv2UiUQdHULufOu2RA1BcR5mncrJHjVNZlzDf1TNcC7qghBWPDd0sF6YPqaOCJZ_AOxjHWFASazbMSGw5ay-zGH36rLx-IiTNDDpSmR14HJQa6qmup_TC28Fgjd43g4uNICYfyx8YyVY2Cz7080s9QRr8K44ICOF5Cs7GpiQhcSx-c8QIN"/>
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-background via-background/40 to-transparent"></div>
+</div>
+<div class="relative z-10 max-w-4xl">
+<h1 class="text-6xl md:text-8xl font-headline font-bold leading-none tracking-tighter mb-6 text-on-surface">
+                    ESTILO<br/>
+<span class="text-primary italic">ARTESANAL</span><br/>
+                    DE PRECISIÓN.
+                </h1>
+<p class="text-lg md:text-xl text-on-surface-variant max-w-xl mb-10 font-body leading-relaxed">
+                    Más que un corte de pelo. Un ritual de excelencia diseñado para el caballero moderno que valora la precisión arquitectónica del toque del maestro.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<button class="editorial-gradient text-on-primary px-10 py-5 rounded-xl font-headline font-bold text-lg tracking-tight hover:brightness-110 transition-all duration-400 flex items-center justify-center gap-2">
+                        RESERVAR AHORA
+                        <span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="bg-surface-container-highest text-on-surface px-10 py-5 rounded-xl font-headline font-bold text-lg tracking-tight hover:bg-surface-bright transition-all duration-400">
+                        VER SERVICIOS
+                    </button>
+</div>
+</div>
+<!-- Asymmetric Accent -->
+<div class="hidden lg:block absolute right-[-5%] bottom-[10%] w-1/3 aspect-square bg-surface-container-low rounded-xl transform rotate-3 inner-shadow-outline-variant-15 overflow-hidden">
+<img alt="Macro fotografía de herramientas de barbería profesionales, tijeras de plata y cortapelos dispuestos sobre un tapete de cuero oscuro con iluminación dramática" class="w-full h-full object-cover opacity-70" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCCcg3MqcVRz4agxQ4WCI_Mcdm3OC0UaaO4dileahmzmPNHe0LFO5R9ypxAPVcpM1Orstr61lh9izqmSFWIgLiLUfwL3vziTchSR3SbcHvkk8svy4Rr5HRevQXYv4WtRBgVJMnhcFeGrXQV3r4c1gHdx9Gnvg_CCeiF04_yOAWRc1uao65ecnfUdOf9SzVxkPiX0umJgTb03VwlQa_0SarnaLpoz1ksm3RJgeFtmr1rTd94kssbI3d6GXPTwTC_k7k6GTeCr12iBkU_"/>
+</div>
+</section>
+<!-- Services Section: Bento Grid -->
+<section class="px-6 py-24 max-w-7xl mx-auto">
+<div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+<div>
+<h2 class="text-sm font-label tracking-[0.3em] text-primary uppercase mb-4">La Selección</h2>
+<h3 class="text-4xl md:text-5xl font-headline font-bold text-on-surface leading-tight">EXPERIENCIAS<br/>CURADAS</h3>
+</div>
+<div class="text-on-surface-variant max-w-sm text-right font-body italic">
+                    Cada servicio incluye consulta, lavado exclusivo y un acabado artesanal.
+                </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Service Card 1 -->
+<div class="md:col-span-8 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between min-h-[400px] inner-shadow-outline-variant-15 relative overflow-hidden group">
+<div class="absolute inset-0 z-0 opacity-20 group-hover:opacity-40 transition-opacity duration-700">
+<img alt="Un hombre sofisticado recibiendo un corte de pelo degradado en un entorno de barbería de lujo" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeDGH1MhY8IWXpPapq9bTFuDzq6fyKUyytRrUJsb-lv3Ip80VK2dY-m80qJIZbTT0t69YdSvy8ObZqBdb7TMg4PLQux2bHUo1v3YzPOyi9kxn9vBQqjULARxyg1N26NSRTrEDV3QALtyti8yydukMFj9j72HhkRoV6XJvYM120pfvJ2Ca_bzhPhIEqpFkfLOPah14dZ2vTjuCRbkrZS2Vg-EQgWCej381COUDAW4sliCZgwVRT_4C_b46RCjs-D34qAhixhaBsCnh"/>
+</div>
+<div class="relative z-10">
+<span class="px-4 py-1 rounded-full border border-outline-variant text-[10px] uppercase tracking-widest text-on-surface-variant font-label">Exclusivo</span>
+<h4 class="text-4xl font-headline font-bold mt-4">Corte de Pelo The Atelier</h4>
+<p class="mt-4 text-on-surface-variant max-w-md font-body">Nuestra experiencia insignia. Un corte de precisión adaptado a la forma de tu cabeza, tipo de cabello y estilo de vida.</p>
+</div>
+<div class="relative z-10 flex justify-between items-center">
+<span class="text-2xl font-headline font-bold text-primary">$65</span>
+<button class="w-12 h-12 rounded-full bg-surface-container-highest flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all duration-400">
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Service Card 2 -->
+<div class="md:col-span-4 bg-surface-container-highest rounded-xl p-8 flex flex-col justify-between min-h-[400px] inner-shadow-outline-variant-15 group">
+<div>
+<div class="w-full h-48 rounded-lg overflow-hidden mb-6">
+<img alt="Primer plano de un barbero usando una navaja de afeitar para delinear la barba con vapor de fondo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnHXnGSgodsbL3EzxEkXkbHU0b6B6_hu_FLtncooSaCzq-os6uPOZv2E3U_0JDu9UBDJ6JPDXpS-F76FZJmwi8QpxxjWTeN_O_4bJWUNcbCD2NpgjLB5AKS7rqxpsY1bOybms2r5ODWWazIRqJS4prRRgqu4gylcNQMNN_kAPEeMlFPIi_M1_N_ATveG2E75aMSJCbEwpDlNDREd5ekMnvaOgxv_SmMq5H2eY3oVBxxBKDhDEQa1C9DpVEUxqYt2pN2LbWmFVc6tBq"/>
+</div>
+<h4 class="text-2xl font-headline font-bold">Esculpido de Barba</h4>
+<p class="mt-2 text-on-surface-variant text-sm font-body">Recorte estratégico y delineado con toalla caliente para la silueta perfecta.</p>
+</div>
+<div class="flex justify-between items-center pt-6 border-t border-outline-variant/10">
+<span class="text-xl font-headline font-bold text-primary">$45</span>
+<span class="material-symbols-outlined text-on-surface-variant">content_cut</span>
+</div>
+</div>
+<!-- Service Card 3 -->
+<div class="md:col-span-4 bg-surface-container-low rounded-xl p-8 flex flex-col justify-between min-h-[300px] inner-shadow-outline-variant-15">
+<div>
+<h4 class="text-2xl font-headline font-bold">El Afeitado Real</h4>
+<p class="mt-2 text-on-surface-variant text-sm font-body">Tratamiento de toalla caliente en múltiples etapas y acabado con navaja.</p>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-xl font-headline font-bold text-primary">$55</span>
+<span class="material-symbols-outlined text-on-surface-variant">flare</span>
+</div>
+</div>
+<!-- Service Card 4 -->
+<div class="md:col-span-8 bg-surface-container-lowest rounded-xl p-8 flex items-center gap-8 inner-shadow-outline-variant-15">
+<div class="flex-1">
+<h4 class="text-2xl font-headline font-bold">Ritual de Cabeza y Rostro</h4>
+<p class="mt-2 text-on-surface-variant text-sm font-body">Combina nuestro corte exclusivo con una mascarilla de carbón y masaje facial para el máximo rejuvenecimiento.</p>
+<div class="mt-6 flex items-center gap-4">
+<span class="text-xl font-headline font-bold text-primary">$100</span>
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[10px] rounded-full font-label tracking-tighter uppercase">Más Popular</span>
+</div>
+</div>
+<div class="hidden sm:block w-32 h-32 rounded-full border-2 border-primary/20 p-2">
+<div class="w-full h-full rounded-full bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-4xl">spa</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Feature Section: The Artisans -->
+<section class="py-24 bg-surface-container-low/50">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="relative">
+<div class="aspect-[4/5] rounded-xl overflow-hidden shadow-2xl relative z-10">
+<img alt="Retrato de un barbero profesional tatuado con delantal negro en una tienda vintage de alta gama" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvKzXbpI3ZAG_1qY2ZHAXqwepzsHS7EYM8jM_RL9eHTbD35OsL4aLGO7YULqMQ-BLw1e3SSqpRDad34tAkgVDNOnO4gJcfXhwLNEyAkcV43qPgspIv4kWOkKjU_0yRR2O5Ps4n4gRN-NN6qxbac8Z5-TH_CGiEXwt4xSH-42o_L_5nRpFWeiU7q7NmcoPFfgQ3ltEj6-vzm9i1gY2t6PZPDlsT1GqXoK6k6GzSp4HgBn-3bK9ewFJaBEuMwHRVzHEh-cTEYue01rbS"/>
+</div>
+<div class="absolute -bottom-10 -right-10 w-64 h-64 bg-primary/10 rounded-xl z-0 backdrop-blur-xl border border-primary/20 flex flex-col p-8 justify-center">
+<span class="text-primary text-5xl font-headline font-bold">15+</span>
+<span class="text-on-surface font-label uppercase tracking-widest text-xs mt-2">Años de Maestría</span>
+</div>
+</div>
+<div>
+<h2 class="text-sm font-label tracking-[0.3em] text-primary uppercase mb-4">El Maestro</h2>
+<h3 class="text-5xl font-headline font-bold text-on-surface mb-8 leading-tight">JULIAN<br/>VANCE</h3>
+<p class="text-on-surface-variant font-body text-lg leading-relaxed mb-8">
+                            Fundador de The Atelier, Julian ha pasado más de una década perfeccionando la intersección entre la barbería clásica y la geometría arquitectónica moderna. Su filosofía se centra en un enfoque único de "estructura ósea" para cada cliente.
+                        </p>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">verified</span>
+<div>
+<h5 class="font-headline font-bold text-on-surface">Enfoque de Precisión</h5>
+<p class="text-sm text-on-surface-variant">Experto en degradados texturizados y modelado de barba estructurado.</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-primary mt-1">content_cut</span>
+<div>
+<h5 class="font-headline font-bold text-on-surface">Herramientas Artesanales</h5>
+<p class="text-sm text-on-surface-variant">Uso exclusivo de acero japonés afilado a medida para cada corte.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Newsletter / CTA -->
+<section class="px-6 py-24">
+<div class="max-w-4xl mx-auto bg-surface-container-highest rounded-3xl p-12 text-center relative overflow-hidden">
+<div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+<h2 class="text-4xl font-headline font-bold mb-4">ÚNETE AL CÍRCULO INTERNO</h2>
+<p class="text-on-surface-variant mb-10 max-w-md mx-auto">Recibe acceso prioritario a reservas e información exclusiva de estilo de nuestros maestros barberos.</p>
+<form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+<input class="flex-1 bg-surface-container-lowest border-none rounded-xl px-6 py-4 text-on-surface focus:ring-1 focus:ring-primary placeholder:text-neutral-600 font-body" placeholder="Correo Electrónico" type="email"/>
+<button class="editorial-gradient text-on-primary font-headline font-bold px-8 py-4 rounded-xl hover:brightness-110 transition-all">SUSCRIBIRSE</button>
+</form>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 bg-neutral-950/80 backdrop-blur-lg rounded-t-2xl z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
+<a class="flex flex-col items-center justify-center text-[#F2CA50] scale-110 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home_max</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Inicio</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 group" href="#">
+<span class="material-symbols-outlined">content_cut</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Servicios</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 group" href="#">
+<span class="material-symbols-outlined">calendar_today</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Horarios</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-500 group" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Cuenta</span>
+</a>
+</nav>
+<!-- Floating Booking FAB -->
+<button class="fixed bottom-24 right-6 w-16 h-16 rounded-full editorial-gradient text-on-primary shadow-2xl z-40 flex items-center justify-center md:hidden active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+</body></html>
