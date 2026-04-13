@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
+import BottomNavBar from './components/BottomNavBar';
 
 // Import all screens (these will be generated next)
 import LandingPage from './screens/LandingPage';
@@ -16,6 +17,7 @@ function App() {
   return (
     <BrowserRouter>
       <Header />
+      <BottomNavBar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login" element={<Login />} />

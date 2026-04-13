@@ -166,25 +166,6 @@ const Calendario = () => {
                 </button>
             </div>
             
-            {/* Bottom Navigation Shell for Mobile Layout matching */}
-            <nav className="fixed bottom-0 left-0 w-full flex justify-around items-center h-20 px-4 bg-neutral-950/80 backdrop-blur-lg rounded-t-2xl z-50 shadow-[0_-4px_20px_rgba(0,0,0,0.4)] md:hidden">
-                <Link to="/" className="flex flex-col items-center justify-center text-neutral-500 hover:text-neutral-200 transition-all duration-400">
-                    <span className="material-symbols-outlined mb-1">home_max</span>
-                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest">Inicio</span>
-                </Link>
-                <Link to="/seleccion" className="flex flex-col items-center justify-center text-neutral-500 hover:text-neutral-200 transition-all duration-400">
-                    <span className="material-symbols-outlined mb-1">content_cut</span>
-                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest">Servicios</span>
-                </Link>
-                <Link to="/calendario" className="flex flex-col items-center justify-center text-[#F2CA50] scale-110 group">
-                    <span className="material-symbols-outlined mb-1" style={{ fontVariationSettings: "'FILL' 1" }}>calendar_today</span>
-                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest mt-1">Horarios</span>
-                </Link>
-                <Link to="/login" className="flex flex-col items-center justify-center text-neutral-500 hover:text-neutral-200 transition-all duration-400">
-                    <span className="material-symbols-outlined mb-1">person</span>
-                    <span className="font-['Manrope'] text-[10px] uppercase tracking-widest">Cuenta</span>
-                </Link>
-            </nav>
         </div>
     );
 };

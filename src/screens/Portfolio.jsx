@@ -126,25 +126,7 @@ const Portfolio = () => {
 </div>
 </div>
 </main>
-{/* BottomNavBar */}
-<nav className="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center h-20 pb-safe px-4 bg-neutral-950/80 backdrop-blur-2xl shadow-[0_-8px_30px_rgb(0,0,0,0.5)] rounded-t-2xl z-50">
-<button className="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 scale-95 active:scale-90 transition-transform">
-<span className="material-symbols-outlined" data-icon="content_cut">content_cut</span>
-<span className="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Studio</span>
-</button>
-<button className="flex flex-col items-center justify-center text-amber-400 bg-neutral-800/50 rounded-xl px-4 py-1 scale-95 active:scale-90 transition-transform">
-<span className="material-symbols-outlined" data-icon="auto_awesome_motion">auto_awesome_motion</span>
-<span className="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Portfolios</span>
-</button>
-<button className="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 scale-95 active:scale-90 transition-transform">
-<span className="material-symbols-outlined" data-icon="card_membership">card_membership</span>
-<span className="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Club</span>
-</button>
-<button className="flex flex-col items-center justify-center text-neutral-500 px-4 py-1 scale-95 active:scale-90 transition-transform">
-<span className="material-symbols-outlined" data-icon="star">star</span>
-<span className="font-['Manrope'] text-[10px] font-semibold uppercase tracking-widest mt-1">Reviews</span>
-</button>
-</nav>
+
 {/* NavigationDrawer (Mobile Only Sidebar Logic Placeholder) */}
 <aside className="hidden fixed top-0 left-0 h-full w-80 bg-neutral-950 z-[60] flex flex-col py-8 rounded-r-3xl transition-transform duration-500 -translate-x-full">
 <div className="px-8 mb-10 flex flex-col items-start">
