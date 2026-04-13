@@ -1,0 +1,15 @@
+django>=5.0
+djangorestframework
+djangorestframework-simplejwt
+dj-rest-auth
+django-allauth
+django-cors-headers
+pytest
+pytest-django
+requests
+django-environ
+psycopg2-binary
+Authlib
+cryptography
+pytz
+drf-spectacular

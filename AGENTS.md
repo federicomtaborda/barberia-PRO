@@ -1,62 +1,70 @@
 # AGENTS.md - Barbería PRO
 
 ## Project Overview
-- **Type**: React SPA with React Router
-- **Framework**: React 19 + Vite 8
-- **Styling**: Tailwind CSS 4
-- **Routing**: React Router DOM 7
+
+Full-stack project with React frontend (Vite) and Django backend.
+
+| Component | Technology |
+|-----------|------------|
+| Frontend | React 19, Vite 8, React Router 7, Tailwind CSS 4 |
+| Backend | Django 5, Django REST Framework, JWT (SimpleJWT) |
+| State | Zustand (frontend), Django ORM (backend) |
+
+---
 
 ## Build Commands
 
+### Frontend (cd frontend)
+
 ```bash
-npm run dev      # Start dev server (http://localhost:5173)
-npm run build    # Production build to dist/
-npm run preview  # Preview production build
+npm run dev          # Start dev server (http://localhost:5173)
+npm run build        # Production build to dist/
+npm run preview      # Preview production build
+npm run generate-types  # Generate API types from OpenAPI schema
 ```
 
-**Note**: No test framework or linter is currently configured.
-**Recommendation**: Install ESLint + Prettier and Vitest before continuing development.
+### Backend (cd backend)
+
+```bash
+python manage.py runserver           # Start Django server (http://localhost:8000)
+python manage.py migrate            # Run migrations
+python manage.py createsuperuser    # Create admin user
+pytest                              # Run all tests
+pytest path/to/test.py              # Run single test file
+pytest -k test_name                 # Run tests matching pattern
+pytest --tb=short                  # Run with shorter traceback
+```
+
+### Docker
+
+```bash
+docker-compose up --build           # Start all services
+docker-compose down                 # Stop all services
+```
+
+---
 
 ## Code Style Guidelines
 
-### Project Structure (Backend Ready)
-```
-src/
-├── api/             # API configuration, Axios instances, interceptors
-├── store/           # Global state management (Zustand)
-├── hooks/           # Custom React hooks (e.g., useAuth)
-├── utils/           # Helper functions and constants
-├── screens/         # Page-level components (each route)
-├── components/      # Reusable UI components
-├── assets/          # Static assets (images, icons)
-├── main.jsx         # Entry point
-├── App.jsx          # Router configuration
-└── style.css        # Global styles + Tailwind
-```
+### General
 
-### System Agents (Responsibilities)
+- **Line length**: Max 100 characters
+- **Indentation**: 2 spaces (frontend), 4 spaces (backend Python)
+- **No trailing whitespace**
+- **Use meaningful variable/function names**
 
-To maintain code quality and scalability as the project connects to a backend, follow these theoretical "Agent" guidelines:
+### Frontend (React/TypeScript)
 
-1. **Auth Agent**: Responsible for protecting routes (`/perfil`, `/confirmacion`), intercepting unauthorized requests via Axios, and managing the JWT lifecycle.
-2. **Booking Agent**: Governs the appointment logic. Uses **Zustand** (`useBookingStore`) to persist services, barbers, and timeslots across screens. Validates that no incomplete data reaches the confirmation screen.
-3. **UX/UI Agent (Editorial)**: Ensures all new components respect the "No-Line" editorial design system. Enforces usage of `editorial-gradient`, `inner-shadow-outline-variant-15`, and the `ChromaticImage` component for scroll-reveals.
-
-### Imports
-```jsx
+**Imports** (grouped, separated by blank lines):
+```tsx
 import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import useBookingStore from '../store/useBookingStore';
 import Component from './components/Component';
 ```
 
-### Component Patterns
-- Use functional components with arrow function syntax
-- Export default at bottom of file
-- Use JSX fragments `<>...</>` when needed
-- Keep components focused and single-purpose
-
-```jsx
+**Component Pattern**:
+```tsx
 const ComponentName = () => {
   const navigate = useNavigate();
   const handleClick = () => { /* ... */ };
@@ -65,150 +73,156 @@ const ComponentName = () => {
 export default ComponentName;
 ```
 
-### Tailwind CSS (v4)
+**Naming**:
+| Type | Convention | Example |
+|------|------------|---------|
+| Files | PascalCase | `Login.tsx` |
+| Components | PascalCase | `const Login = () => ...` |
+| Functions | camelCase | `handleSubmit` |
+| Hooks | camelCase, prefix `use` | `useAuth` |
+
+**Tailwind CSS**:
+- Use `@theme` custom properties in `style.css`
 - Custom fonts: `font-headline`, `font-body`, `font-label`
-- Custom colors: `primary`, `surface`, `on-surface`, `on-surface-variant`
+- Custom colors: `primary`, `surface`, `on-surface`
 - Use `bg-artisan-gradient` for primary buttons
 - Custom shadows: `inner-shadow-outline-variant-15`
 
-### Naming Conventions
-| Type | Convention | Example |
-|------|------------|---------|
-| Files | PascalCase | `Login.jsx` |
-| Components | PascalCase | `const Login = () => ...` |
-| Functions | camelCase | `handleSubmit` |
-| CSS classes | kebab-case | `text-primary` |
+**State Management**:
+- Use Zustand for global state (`src/store/`)
+- Use React useState/useEffect for local state
 
-### JSX Conventions
-- Self-closing tags: `<Input />`
-- Semantic HTML: `<main>`, `<section>`, `<header>`
-- Accessibility: `htmlFor` on labels, `alt` on images, `type` on inputs
+### Backend (Django/Python)
 
-### Error Handling
-- Use try/catch for async operations
-- Validate form inputs inline
-- Display errors via state: `const [error, setError] = useState(null);`
+**Imports** (PEP 8 - stdlib, third-party, local):
+```python
+import os
+from pathlib import Path
 
-### State Management
-```jsx
-const [state, setState] = useState(initialValue);
-useEffect(() => { /* side effect */ }, [dependencies]);
+import environ
+from rest_framework import generics, permissions
+
+from users.models import CustomUser
+from users.serializers import UserSerializer
 ```
 
-### Common Patterns
+**Naming**:
+| Type | Convention | Example |
+|------|------------|---------|
+| Files | snake_case | `views.py` |
+| Classes | PascalCase | `class UserSerializer` |
+| Functions | snake_case | `def get_queryset` |
+| Constants | UPPER_SNAKE_CASE | `MAX_RETRIES = 3` |
 
-**Link navigation**: `<Link to="/ruta">Texto</Link>`
-**Route parameter**: `const { id } = useParams();`
-**Navigate**: `const navigate = useNavigate(); navigate('/ruta');`
-**Form handler**: `const handleSubmit = (e) => { e.preventDefault(); /* ... */ };`
+**Django Patterns**:
+- Use DRF generics for views: `ListAPIView`, `CreateAPIView`, etc.
+- Serializers should inherit from `serializers.ModelSerializer`
+- Models use `models.Model` with clear field definitions
+- URLs use descriptive names with `app_name` in `urls.py`
+
+**Error Handling**:
+- Use try/except in views for external calls
+- Return appropriate HTTP status codes
+- Use Django's logging for errors
+
+---
+
+## Project Structure
+
+```
+barberia-pro/
+├── frontend/                 # React SPA
+│   ├── src/
+│   │   ├── api/             # Axios config, interceptors
+│   │   ├── store/           # Zustand stores
+│   │   ├── screens/         # Page components
+│   │   ├── components/      # Reusable UI components
+│   │   ├── types/           # TypeScript types
+│   │   └── main.jsx         # Entry point
+│   ├── package.json
+│   └── vite.config.js
+├── backend/                  # Django REST API
+│   ├── core/                # Appointments, services app
+│   ├── users/               # Custom user app
+│   ├── barberia_pro/        # Django project settings
+│   ├── requirements.txt
+│   └── manage.py
+├── docker-compose.yml
+└── .env                     # Environment variables
+```
+
+---
 
 ## Routes
+
+### Frontend
+
 | Path | Component | Description |
 |------|-----------|-------------|
 | `/` | LandingPage | Home page |
 | `/login` | Login | User login |
-| `/registro` | Registro | User registration |
+| `/registro` | Registro | Registration |
 | `/seleccion` | SeleccionServicio | Service selection |
-| `/calendario` | Calendario | Appointment booking |
-| `/perfil` | Perfil | User profile |
+| `/calendario` | Calendario | Date/time selection |
+| `/perfil` | Perfil | User profile (protected) |
 | `/portfolio` | Portfolio | Barbers portfolio |
 | `/confirmacion` | Confirmacion | Booking confirmation |
 
-## Component Guidelines
+### Backend API
 
-### Creating New Screens
-1. Create file in `src/screens/` with PascalCase name
-2. Add route in `App.jsx` following existing pattern
-3. Use semantic HTML structure (header/main/section/footer)
-4. Apply consistent spacing with Tailwind utilities
+| Endpoint | Description |
+|----------|-------------|
+| `/api/` | API root |
+| `/api/schema/` | OpenAPI schema |
+| `/api/auth/` | Authentication endpoints |
+| `/api/users/` | User CRUD |
 
-### Reusable Components
-- Create shared components in `src/components/`
-- Examples: Button, Input, Card, Modal, LoadingSpinner
-- Keep props simple and well-documented
-- Use TypeScript if available for type safety
+---
 
-### State and Data Flow
-- Pass data via props (parent to child)
-- Use callback functions for child-to-parent communication
-- Consider React Context for theme/auth/global state
-- Avoid prop drilling - extract intermediate components
+## Agent Responsibilities
+
+1. **Auth Agent**: Protect routes (`/perfil`, `/confirmacion`), JWT lifecycle
+2. **Booking Agent**: Zustand store for appointments, validation before confirmation
+3. **UX/UI Agent**: Maintain "No-Line" design system, use `ChromaticImage`
+
+---
+
+## Common Patterns
+
+### Frontend: API call with error handling
+```tsx
+try {
+  const response = await api.post('/endpoint', data);
+  setData(response.data);
+} catch (error) {
+  setError(error.message);
+}
+```
+
+### Backend: Model with timestamps
+```python
+class Service(models.Model):
+    name = models.CharField(max_length=100)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+```
+
+---
 
 ## Development Workflow
 
-### Running Development Server
-```bash
-npm run dev
-```
-- Opens http://localhost:5173
-- Hot module replacement enabled
-- Changes auto-reload in browser
+1. Start backend: `cd backend && python manage.py runserver`
+2. Start frontend: `cd frontend && npm run dev`
+3. Make changes - hot reload enabled
+4. Test: run pytest for backend, browser for frontend
+5. Build: `npm run build` for frontend
 
-### Building for Production
-```bash
-npm run build
-```
-- Outputs to `dist/` directory
-- Optimized and minified assets
-- Ready for deployment to hosting
-
-### Preview Production Build
-```bash
-npm run preview
-```
-- Serves production build locally
-- Useful to test build before deployment
-
-## Code Review Checklist
-
-- [ ] Import React at top of JSX files
-- [ ] Use semantic HTML elements
-- [ ] Include accessibility attributes (alt, htmlFor, type)
-- [ ] Follow naming conventions (PascalCase files/components)
-- [ ] Use Tailwind utility classes consistently
-- [ ] Handle errors in async operations
-- [ ] Remove unused imports and variables
-
-## Common Patterns Reference
-
-### Conditional Classes
-```jsx
-className={`base-class ${isActive ? 'active-class' : ''}`}
-```
-
-### List Rendering
-```jsx
-items.map(item => (
-  <Item key={item.id} data={item} />
-))
-```
-
-### Loading State
-```jsx
-{isLoading ? <Spinner /> : <Content />}
-```
-
-### Form with Validation
-```jsx
-const [errors, setErrors] = useState({});
-const validate = () => { /* ... */ };
-const handleSubmit = (e) => {
-  e.preventDefault();
-  if (validate()) { /* submit */ }
-};
-```
-
-## Working on This Project
-1. Run `npm run dev` to start the dev server
-2. Edit files in `src/` - changes hot-reload automatically
-3. Build with `npm run build` before deploying
-4. Test in browser at http://localhost:5173
+---
 
 ## Recommended Improvements
-- Add ESLint + Prettier for code consistency
-- Add Vitest or React Testing Library for tests
-- Consider TypeScript for type safety
-- Extract repeated JSX into reusable components
-- Add error boundaries for better error handling
-- Implement proper form validation libraries
-- Add prop-types or switch to TypeScript
+
+- Add ESLint + Prettier for frontend
+- Add Vitest for frontend tests
+- Use TypeScript strictly (currently partial)
+- Add black/isort for Python formatting
