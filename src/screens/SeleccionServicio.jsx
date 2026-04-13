@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import ChromaticImage from '../components/ChromaticImage';
+import useBookingStore from '../store/useBookingStore';
 
 const servicesData = [
   {
@@ -33,26 +34,17 @@ const servicesData = [
 ];
 
 const SeleccionServicio = () => {
-    const [selectedServices, setSelectedServices] = useState([]);
     const navigate = useNavigate();
+    const { 
+        selectedServicesIds, 
+        toggleService, 
+        getTotalAmount 
+    } = useBookingStore();
 
-    const toggleService = (id) => {
-        if (selectedServices.includes(id)) {
-            setSelectedServices(selectedServices.filter(serviceId => serviceId !== id));
-        } else {
-            setSelectedServices([...selectedServices, id]);
-        }
-    };
-
-    const totalAmount = selectedServices.reduce((total, id) => {
-        const service = servicesData.find(s => s.id === id);
-        return total + (service ? service.price : 0);
-    }, 0);
+    const totalAmount = getTotalAmount();
 
     const handleContinue = () => {
-        if (selectedServices.length > 0) {
-            // In a real app, you would pass this data via context or state manager to the next screen
-            // For now, simply navigate to calendar
+        if (selectedServicesIds.length > 0) {
             navigate('/calendario');
         }
     };
@@ -74,7 +66,7 @@ const SeleccionServicio = () => {
                 {/* Services Bento/List Layout */}
                 <div className="space-y-6">
                     {servicesData.map((service) => {
-                        const isSelected = selectedServices.includes(service.id);
+                        const isSelected = selectedServicesIds.includes(service.id);
                         
                         return (
                             <div 
@@ -135,11 +127,11 @@ const SeleccionServicio = () => {
 
             {/* Sticky Summary Bar */}
             <div className={`fixed bottom-24 left-1/2 -translate-x-1/2 w-[calc(100%-3rem)] max-w-xl bg-neutral-900/90 backdrop-blur-xl rounded-2xl p-4 shadow-2xl flex items-center justify-between border transition-all duration-500 z-40
-                ${selectedServices.length > 0 ? 'translate-y-0 opacity-100 border-[#F2CA50]/30' : 'translate-y-10 opacity-0 pointer-events-none border-outline-variant/20'}
+                ${selectedServicesIds.length > 0 ? 'translate-y-0 opacity-100 border-[#F2CA50]/30' : 'translate-y-10 opacity-0 pointer-events-none border-outline-variant/20'}
             `}>
                 <div>
                     <p className="text-[10px] tracking-widest text-on-surface-variant uppercase mb-1">
-                        {selectedServices.length} {selectedServices.length === 1 ? 'Servicio' : 'Servicios'}
+                        {selectedServicesIds.length} {selectedServicesIds.length === 1 ? 'Servicio' : 'Servicios'}
                     </p>
                     <p className="font-headline text-2xl font-bold text-[#F2CA50]">
                         ${totalAmount}.00
@@ -147,7 +139,7 @@ const SeleccionServicio = () => {
                 </div>
                 <button 
                     onClick={handleContinue}
-                    disabled={selectedServices.length === 0}
+                    disabled={selectedServicesIds.length === 0}
                     className="bg-[#F2CA50] text-neutral-950 px-8 py-3 rounded-xl font-bold font-label uppercase tracking-widest text-xs transition-all duration-400 active:scale-95 shadow-lg shadow-[#F2CA50]/20 hover:bg-[#D4AF37] disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                     Reservar Turno

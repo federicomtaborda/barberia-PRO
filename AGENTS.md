@@ -19,21 +19,34 @@ npm run preview  # Preview production build
 
 ## Code Style Guidelines
 
-### Project Structure
+### Project Structure (Backend Ready)
 ```
 src/
-├── screens/          # Page-level components (each route)
-├── components/      # Reusable UI components (create as needed)
+├── api/             # API configuration, Axios instances, interceptors
+├── store/           # Global state management (Zustand)
+├── hooks/           # Custom React hooks (e.g., useAuth)
+├── utils/           # Helper functions and constants
+├── screens/         # Page-level components (each route)
+├── components/      # Reusable UI components
 ├── assets/          # Static assets (images, icons)
 ├── main.jsx         # Entry point
 ├── App.jsx          # Router configuration
 └── style.css        # Global styles + Tailwind
 ```
 
+### System Agents (Responsibilities)
+
+To maintain code quality and scalability as the project connects to a backend, follow these theoretical "Agent" guidelines:
+
+1. **Auth Agent**: Responsible for protecting routes (`/perfil`, `/confirmacion`), intercepting unauthorized requests via Axios, and managing the JWT lifecycle.
+2. **Booking Agent**: Governs the appointment logic. Uses **Zustand** (`useBookingStore`) to persist services, barbers, and timeslots across screens. Validates that no incomplete data reaches the confirmation screen.
+3. **UX/UI Agent (Editorial)**: Ensures all new components respect the "No-Line" editorial design system. Enforces usage of `editorial-gradient`, `inner-shadow-outline-variant-15`, and the `ChromaticImage` component for scroll-reveals.
+
 ### Imports
 ```jsx
 import React from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import useBookingStore from '../store/useBookingStore';
 import Component from './components/Component';
 ```
 

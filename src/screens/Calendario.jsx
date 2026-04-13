@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useBookingStore from '../store/useBookingStore';
 
 const barbers = [
     { id: 1, name: 'Julian Vance', title: 'Master Barber', image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCvKzXbpI3ZAG_1qY2ZHAXqwepzsHS7EYM8jM_RL9eHTbD35OsL4aLGO7YULqMQ-BLw1e3SSqpRDad34tAkgVDNOnO4gJcfXhwLNEyAkcV43qPgspIv4kWOkKjU_0yRR2O5Ps4n4gRN-NN6qxbac8Z5-TH_CGiEXwt4xSH-42o_L_5nRpFWeiU7q7NmcoPFfgQ3ltEj6-vzm9i1gY2t6PZPDlsT1GqXoK6k6GzSp4HgBn-3bK9ewFJaBEuMwHRVzHEh-cTEYue01rbS' },
@@ -33,10 +34,32 @@ const getNextDays = (days) => {
 };
 
 const Calendario = () => {
-    const [selectedBarber, setSelectedBarber] = useState(barbers[0].id);
-    const [selectedDate, setSelectedDate] = useState(getNextDays(7)[0]);
-    const [selectedTime, setSelectedTime] = useState(null);
     const navigate = useNavigate();
+    const { 
+        selectedBarberId: selectedBarber, 
+        setBarber,
+        selectedDate,
+        selectedTime,
+        setDateAndTime,
+        selectedServicesIds
+    } = useBookingStore();
+
+    // Default barber initialization if none selected
+    useEffect(() => {
+        if (!selectedBarber && barbers.length > 0) {
+            setBarber(barbers[0].id);
+        }
+    }, [selectedBarber, setBarber]);
+
+    // Set default date if none selected
+    useEffect(() => {
+        if (!selectedDate) {
+            setDateAndTime(getNextDays(7)[0], null);
+        }
+    }, [selectedDate, setDateAndTime]);
+
+    const setSelectedDateItem = (d) => setDateAndTime(d, null);
+    const setSelectedTimeItem = (t) => setDateAndTime(selectedDate, t);
 
     const dates = getNextDays(14);
 
@@ -70,7 +93,7 @@ const Calendario = () => {
                             {barbers.map(barber => (
                                 <div 
                                     key={barber.id}
-                                    onClick={() => setSelectedBarber(barber.id)}
+                                    onClick={() => setBarber(barber.id)}
                                     className={`group relative rounded-xl p-4 transition-all duration-400 ease-out cursor-pointer flex items-center gap-4 inner-shadow-outline-variant-15
                                         ${selectedBarber === barber.id 
                                             ? 'bg-surface-variant border-2 border-[#F2CA50]' 
@@ -100,11 +123,11 @@ const Calendario = () => {
                         </h3>
                         <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar snap-x">
                             {dates.map((d, index) => {
-                                const isSelected = selectedDate.dayNumber === d.dayNumber && selectedDate.month === d.month;
+                                const isSelected = selectedDate?.dayNumber === d.dayNumber && selectedDate?.month === d.month;
                                 return (
                                     <div 
                                         key={index}
-                                        onClick={() => { setSelectedDate(d); setSelectedTime(null); }} // Reset time when day changes
+                                        onClick={() => setSelectedDateItem(d)}
                                         className={`snap-center shrink-0 w-24 h-32 rounded-2xl flex flex-col items-center justify-center cursor-pointer transition-all duration-300 border-2 inner-shadow-outline-variant-15
                                             ${isSelected 
                                                 ? 'bg-[#F2CA50] text-neutral-950 border-[#F2CA50] scale-105 shadow-[0_0_20px_rgba(242,202,80,0.2)]' 
@@ -130,7 +153,7 @@ const Calendario = () => {
                             {availableTimeSlots.map((time) => (
                                 <div 
                                     key={time}
-                                    onClick={() => setSelectedTime(time)}
+                                    onClick={() => setSelectedTimeItem(time)}
                                     className={`py-4 rounded-xl text-center cursor-pointer font-bold font-headline transition-all duration-300 border-2 inner-shadow-outline-variant-15 hover:-translate-y-1
                                         ${selectedTime === time 
                                             ? 'bg-surface-variant border-[#F2CA50] text-[#F2CA50] shadow-[0_4px_20px_rgba(242,202,80,0.15)]' 
@@ -152,7 +175,7 @@ const Calendario = () => {
                 <div className="flex flex-col">
                     <p className="text-[10px] tracking-widest text-[#F2CA50] uppercase mb-1 font-bold">Resumen de Cita</p>
                     <p className="font-headline text-xl font-bold text-white flex items-center gap-2">
-                        {selectedDate.dayName} {selectedDate.dayNumber} {selectedDate.month} 
+                        {selectedDate?.dayName} {selectedDate?.dayNumber} {selectedDate?.month} 
                         <span className="text-neutral-500 font-normal">|</span> 
                         {selectedTime}
                     </p>

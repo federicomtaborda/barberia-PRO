@@ -1,8 +1,37 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import useBookingStore from '../store/useBookingStore';
 
 const Confirmacion = () => {
     const navigate = useNavigate();
+    const { 
+        selectedServicesIds, 
+        selectedBarberId, 
+        selectedDate, 
+        selectedTime, 
+        getTotalAmount,
+        getAvailableBarbers,
+        getAvailableServices
+    } = useBookingStore();
+
+    useEffect(() => {
+        if (selectedServicesIds.length === 0 || !selectedBarberId || !selectedDate || !selectedTime) {
+            navigate('/seleccion');
+        }
+    }, [selectedServicesIds, selectedBarberId, selectedDate, selectedTime, navigate]);
+
+    // Computed detailed data
+    const totalAmount = getTotalAmount();
+    const barber = getAvailableBarbers().find(b => b.id === selectedBarberId);
+    
+    // For simplicity, showing the first selected service as the primary one, 
+    // real implementations might loop through all.
+    const primaryService = getAvailableServices().find(s => s.id === selectedServicesIds[0]);
+
+    const totalDuration = selectedServicesIds.reduce((total, id) => {
+        const s = getAvailableServices().find(srv => srv.id === id);
+        return total + (s ? s.duration : 0);
+    }, 0);
 
     const handleConfirm = () => {
         // En un escenario real, aquí se llamaría a la API
@@ -38,11 +67,13 @@ const Confirmacion = () => {
                             />
                         </div>
                         <div className="flex flex-col justify-center flex-1 text-center md:text-left">
-                            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-1">Corte Ejecutivo Signature</h2>
-                            <p className="text-primary font-label text-[10px] uppercase tracking-[0.2em] mb-4">Maestro: Julian Vance</p>
+                            <h2 className="font-headline text-2xl font-bold text-on-surface tracking-tight mb-1">
+                                {primaryService ? primaryService.name : 'Servicio Reservado'} {selectedServicesIds.length > 1 && `(+${selectedServicesIds.length - 1} más)`}
+                            </h2>
+                            <p className="text-primary font-label text-[10px] uppercase tracking-[0.2em] mb-4">Maestro: {barber ? barber.name : 'Desconocido'}</p>
                             <div className="flex gap-4 justify-center md:justify-start">
-                                <span className="bg-surface-bright/50 px-4 py-1.5 rounded-full text-[10px] font-bold text-on-surface tracking-widest uppercase border border-white/5">45 MIN</span>
-                                <span className="bg-primary/10 px-4 py-1.5 rounded-full text-[10px] font-bold text-primary tracking-widest uppercase border border-primary/20">$75.00</span>
+                                <span className="bg-surface-bright/50 px-4 py-1.5 rounded-full text-[10px] font-bold text-on-surface tracking-widest uppercase border border-white/5">{totalDuration} MIN</span>
+                                <span className="bg-primary/10 px-4 py-1.5 rounded-full text-[10px] font-bold text-primary tracking-widest uppercase border border-primary/20">${totalAmount}.00</span>
                             </div>
                         </div>
                     </div>
@@ -55,7 +86,9 @@ const Confirmacion = () => {
                             <span className="material-symbols-outlined text-primary text-xl">calendar_month</span>
                             <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Fecha Seleccionada</span>
                         </div>
-                        <p className="font-headline text-xl font-bold text-on-surface">Lunes, 24 de Octubre</p>
+                        <p className="font-headline text-xl font-bold text-on-surface">
+                            {selectedDate ? `${selectedDate.dayName}, ${selectedDate.dayNumber} de ${selectedDate.month}` : 'Cargando...'}
+                        </p>
                         <p className="text-on-surface-variant text-sm mt-1">Temporada de Otoño 2023</p>
                     </div>
                     <div className="bg-surface-container-low p-6 rounded-2xl border border-white/5">
@@ -63,7 +96,7 @@ const Confirmacion = () => {
                             <span className="material-symbols-outlined text-primary text-xl">schedule</span>
                             <span className="text-[10px] font-bold text-on-surface-variant uppercase tracking-[0.2em]">Hora de Llegada</span>
                         </div>
-                        <p className="font-headline text-xl font-bold text-on-surface">10:30 AM</p>
+                        <p className="font-headline text-xl font-bold text-on-surface">{selectedTime || 'Cargando...'}</p>
                         <p className="text-on-surface-variant text-sm mt-1">Puntualidad Requerida</p>
                     </div>
                 </div>
